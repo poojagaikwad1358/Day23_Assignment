@@ -1,14 +1,15 @@
 public class employeeWage {
+
 	public static final int IsPresent=1;
        	public static final int IsPartTime=2;
         public static final int empRatePerHrs=20;
 	public static final int NumberofWorkingDays=20;
 	public static final int MaxHrsInMonth=100; //Usecase6 - total working hrs or days reached for month
 
-	public static int computeEmpWage() //UseCase7 - Refactor code with class method and variables
+	//public static int computeEmpWage() //UseCase7 - Refactor code with class method and variables
+	public static int computeEmpWage(String company, int empRatePerHrs, int numberofWorkingDays, int MaxHrsPerMonth)
 	{
 
-	System.out.println("Welcome to Employee Wage computation Problem");
 	//UseCase1 - Check employee present or absent
 	int empHrs=0;
 	int empwage=0;
@@ -40,7 +41,9 @@ public class employeeWage {
 		return TotalEmpWage;
 	}
 		public static void main(String[] args) {
-			computeEmpWage();
-		}
+			System.out.println("Welcome to Employee Wage computation Problem");
 
+			computeEmpWage("Dmart ",20,2,10); //Usecase8- Calculate wage for multiple company
+			computeEmpWage("Reliance ",10,4,20);//useCase8- Calculate wage for multiple company
+		}
 }
