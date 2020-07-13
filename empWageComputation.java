@@ -1,57 +1,49 @@
-public class employeeWage {
-		public static final int IsFullTime=1;
-        	public static final int IsPartTime=2;
+public class empWageComputation {
 
-		private final String company;
-		private final int empRatePerHrs;
-		private final int numberOfWorkingDays;
-		private final int maxHrsPerMonth;
-		public int totalEmpWage;
-     public employeeWage(String company, int empRatePerHrs,
-				  int numberOfWorkingDays,int maxHrsPerMonth) {
-	this.company =company;
-	this.empRatePerHrs=empRatePerHrs;
-	this.numberOfWorkingDays=numberOfWorkingDays;
-	this.maxHrsPerMonth=maxHrsPerMonth;
-}
-	public void computeEmpWage() {
+	public static final int IsPresent=1;
+       	public static final int IsPartTime=2;
+        public static final int empRatePerHrs=20;
+	public static final int NumberofWorkingDays=20;
+	public static final int MaxHrsInMonth=100; //Usecase6 - total working hrs or days reached for month
 
-	System.out.println("Welcome to Employee Wage..");
+	//public static int computeEmpWage() //UseCase7 - Refactor code with class method and variables
+	public static int computeEmpWage(String company, int empRatePerHrs, int numberofWorkingDays, int MaxHrsPerMonth)
+	{
 
-	int totalEmpHrs=0;
+	//UseCase1 - Check employee present or absent
 	int empHrs=0;
-	int totalWorkingDays=0;
-
-while (totalEmpHrs <= maxHrsPerMonth && totalWorkingDays < numberOfWorkingDays) {
-	   totalWorkingDays++;
-	   int empcheck=((int)Math.floor(Math.random() * 10))%3;
-		switch (( empcheck ))
-		 {
-		     case IsFullTime:
-			empHrs=8;
-			break;
-		     case IsPartTime:
-			empHrs=4;
-			break;
-		     default:
-			empHrs=0;
-		 }
-
-		totalEmpHrs+=empHrs;
-		System.out.println("Day: " + totalWorkingDays + "EmpHrs: " + empHrs);
-
+	int empwage=0;
+	int TotalWorkingDays=0;
+	int TotalEmpHrs=0;
+	while(TotalEmpHrs <= MaxHrsInMonth && TotalWorkingDays < NumberofWorkingDays)
+	{
+		TotalWorkingDays++;
+		int empcheck=((int)Math.floor(Math.random() * 10))%3;
+		switch ((empcheck)) //UseCase4- Switch case
+		{
+			case IsPresent:
+				empHrs=8;
+				break;
+			case IsPartTime:  //Usecase3-part time
+				empHrs=4;
+				break;
+			default:
+				empHrs=0;
+		}
+		TotalEmpHrs+=empHrs;
+		System.out.println("days: "+TotalWorkingDays + " Employee hrs: "+empHrs);
+		//empwage=empHrs*empRatePerHrs;
+		//System.out.println("Employee Daily Wage= " +empwage); //Usecase2-daily wage
+		//TotalEmpWage+=empwage; //UseCase5- calculate wages for month
 	}
-	     totalEmpWage = totalEmpHrs * empRatePerHrs;
-}
-	    public String toString() {
-		   return "Total Emp Wage For Company:" +company+ "is:" +totalEmpWage ;
+		int TotalEmpWage=TotalEmpHrs *empRatePerHrs;
+		System.out.println("Total employee wage: "+TotalEmpWage);
+		return TotalEmpWage;
 	}
-	     public static void main (String[] args) {
-		    employeeWage dmart = new employeeWage ("Dmart",20,2,10);
-		    employeeWage reliance = new employeeWage ("Reliance",20,2,10);
-		    dmart.computeEmpWage();
-		    System.out.println(dmart);
-		    reliance.computeEmpWage();
-		    System.out.println(reliance);
-	}
+		public static void main(String[] args) {
+			System.out.println("Welcome to Employee Wage computation Problem");
+
+			computeEmpWage("Dmart ",20,2,10); //Usecase8- Calculate wage for multiple company
+			computeEmpWage("Reliance ",10,4,20);//useCase8- Calculate wage for multiple company
+		}
 }
