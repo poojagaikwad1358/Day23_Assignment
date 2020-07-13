@@ -44,7 +44,7 @@ while (totalEmpHrs <= maxHrsPerMonth && totalWorkingDays < numberOfWorkingDays) 
 	     totalEmpWage = totalEmpHrs * empRatePerHrs;
 }
 	    public String toString() {
-		   return "Total Emp Wage For Company:" +company+ "is:" +totalEmpWage ;
+		   return "Total Emp Wage For Company:" +company+ " is: " +totalEmpWage ;
 	}
 	     public static void main (String[] args) {
 		    employeeWage dmart = new employeeWage ("Dmart",20,2,10);
