@@ -5,7 +5,8 @@ public class employeeWage {
 	public static final int NumberofWorkingDays=20;
 	public static final int MaxHrsInMonth=100; //Usecase6 - total working hrs or days reached for month
 
-	public static void main(String[] args) {
+	public static int computeEmpWage() //UseCase7 - Refactor code with class method and variables
+	{
 
 	System.out.println("Welcome to Employee Wage computation Problem");
 	//UseCase1 - Check employee present or absent
@@ -36,5 +37,10 @@ public class employeeWage {
 	}
 		int TotalEmpWage=TotalEmpHrs *empRatePerHrs;
 		System.out.println("Total employee wage: "+TotalEmpWage);
-}
+		return TotalEmpWage;
+	}
+		public static void main(String[] args) {
+			computeEmpWage();
+		}
+
 }
